@@ -17,7 +17,6 @@ function App({ loading }: AppProps) {
   }
   return (
     <div className="app">
-      <Menu />
       <Home />
       {/* <Recipe /> */}
       {/* <Error /> */}
