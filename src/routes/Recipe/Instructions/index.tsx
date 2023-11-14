@@ -2,7 +2,7 @@ import './styles.scss';
 
 type InstructionsProps = {
   steps: string[];
-}
+};
 function Instructions({ steps }: InstructionsProps) {
   return (
     <ol className="steps">

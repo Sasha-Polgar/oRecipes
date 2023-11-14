@@ -1,8 +1,8 @@
 import { createBrowserRouter } from 'react-router-dom';
-import Root from './routes/Root';
-import Error from './components/Error';
-import App from './components/App/App';
-import Recipe from './components/Recipe';
+import Root from './routes/Root/Root';
+import Error from './routes/Error';
+import Recipe from './routes/Recipe';
+import Home from './routes/Home';
 
 // eslint-disable-next-line import/prefer-default-export
 export const router = createBrowserRouter([
@@ -13,7 +13,7 @@ export const router = createBrowserRouter([
     children: [
       {
         path: '/',
-        element: <App />,
+        element: <Home />,
       },
       {
         path: '/recipe/:slug',
