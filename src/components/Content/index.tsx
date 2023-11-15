@@ -6,7 +6,7 @@ import './styles.scss';
 type ContentProps = {
   title: string;
   text: string;
-  recipes?: Recipe[];
+  recipes: Recipe[];
 };
 
 function Content({ title, text, recipes }: ContentProps) {

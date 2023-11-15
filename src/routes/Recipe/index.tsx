@@ -20,11 +20,12 @@ function Recipe() {
   if (!slug) {
     throw new Error('Aucun slug fourni');
   }
-  const dispatch = useAppDispatch;
+  const dispatch = useAppDispatch();
 
   useEffect(() => {
     dispatch(fetchRecipes());
   }, [dispatch]);
+
   const recipe = useAppSelector((state) =>
     findRecipe(state.recipes.list, slug)
   );
