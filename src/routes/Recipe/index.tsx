@@ -9,22 +9,16 @@ import Header from './Header';
 import Ingredients from './Ingredients';
 import Instructions from './Instructions';
 
-import { useAppDispatch, useAppSelector } from '../../hooks/redux';
+import { useAppSelector } from '../../hooks/redux';
 import { findRecipe } from '../../store/selectors/recipes';
 
 import './styles.scss';
-import { fetchRecipes } from '../../store/reducers/recipes';
 
 function Recipe() {
   const { slug } = useParams();
   if (!slug) {
     throw new Error('Aucun slug fourni');
   }
-  const dispatch = useAppDispatch();
-
-  useEffect(() => {
-    dispatch(fetchRecipes());
-  }, [dispatch]);
 
   const recipe = useAppSelector((state) =>
     findRecipe(state.recipes.list, slug)
