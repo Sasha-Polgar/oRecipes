@@ -1,6 +1,5 @@
 /* eslint-disable arrow-body-style */
-import { Navigate, useParams } from 'react-router-dom';
-import { useEffect, useRef } from 'react';
+import { useParams } from 'react-router-dom';
 
 import Page from '../../components/Page';
 import AppHeader from '../../components/AppHeader';
@@ -20,22 +19,15 @@ function Recipe() {
     throw new Error('Aucun slug fourni');
   }
 
-  const endRef = useRef<HTMLDivElement>(null);
-
   const recipe = useAppSelector((state) =>
     findRecipe(state.recipes.list, slug)
   );
 
-  useEffect(() => {
-    endRef.current?.scrollIntoView();
-  }, [recipe]);
-
   if (!recipe) {
-    return <Navigate to="/error" replace />;
+    throw new Error('Recipe not found');
   }
   return (
     <Page>
-      <span ref={endRef} />
       <AppHeader />
       <div className="recipe">
         <Header
