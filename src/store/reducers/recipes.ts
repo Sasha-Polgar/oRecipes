@@ -23,6 +23,16 @@ export const fetchRecipes = createAsyncThunk(
   }
 );
 
+// export const fetchRecipe = createAsyncThunk(
+//   'recipes/fetchRecipes',
+//   async () => {
+//     const { data } = await axios.get(
+//       'https://orecipes-api.onrender.com/api/recipes'
+//     );
+//     return data;
+//   }
+// );
+
 const recipesReducer = createSlice({
   name: 'recipes',
   initialState,

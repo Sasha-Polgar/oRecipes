@@ -1,4 +1,4 @@
-import { NavLink } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import './styles.scss';
 
 type CardProps = {
@@ -15,9 +15,9 @@ function Card({ thumbnail, title, difficulty, slug }: CardProps) {
       <div className="card-content">
         <h2 className="card-title">{title}</h2>
         <p className="card-desc">Difficulté : {difficulty}</p>
-        <NavLink to={`/recipe/${slug}`} className="card-link">
+        <Link to={`/recipe/${slug}`} className="card-link">
           Voir la recette
-        </NavLink>
+        </Link>
       </div>
     </article>
   );
