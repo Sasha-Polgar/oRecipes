@@ -19,7 +19,6 @@ export const fetchRecipes = createAsyncThunk(
     const { data } = await axios.get(
       'https://orecipes-api.onrender.com/api/recipes'
     );
-    console.log(data);
     return data;
   }
 );
