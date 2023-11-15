@@ -1,16 +1,22 @@
 import { Outlet } from 'react-router-dom';
+import { useEffect } from 'react';
 import Menu from '../../components/Menu';
 
 import Loading from './Loading';
 
 import './App.scss';
+import { useAppDispatch, useAppSelector } from '../../hooks/redux';
+import { fetchRecipes } from '../../store/reducers/recipes';
 
-type AppProps = {
-  loading: boolean;
-};
+function App() {
+  const dispatch = useAppDispatch();
+  useEffect(() => {
+    dispatch(fetchRecipes());
+  }, [dispatch]);
 
-function App({ loading }: AppProps) {
-  if (loading) {
+  const isLoading = useAppSelector((state) => state.recipes.isLoading);
+
+  if (isLoading) {
     return <Loading />;
   }
   return (

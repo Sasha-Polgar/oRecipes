@@ -9,29 +9,19 @@ interface RecipesState {
 }
 export const initialState: RecipesState = {
   list: [],
-  isLoading: false,
+  isLoading: true,
   error: null,
 };
 
 export const fetchRecipes = createAsyncThunk(
   'recipes/fetchRecipes',
   async () => {
-    const { data } = await axios.get(
+    const { data } = await axios.get<Recipe[]>(
       'https://orecipes-api.onrender.com/api/recipes'
     );
     return data;
   }
 );
-
-// export const fetchRecipe = createAsyncThunk(
-//   'recipes/fetchRecipes',
-//   async () => {
-//     const { data } = await axios.get(
-//       'https://orecipes-api.onrender.com/api/recipes'
-//     );
-//     return data;
-//   }
-// );
 
 const recipesReducer = createSlice({
   name: 'recipes',
@@ -39,13 +29,13 @@ const recipesReducer = createSlice({
   reducers: {},
   extraReducers(builder) {
     builder
-      .addCase(fetchRecipes.pending, (state) => {
-        state.isLoading = true;
-        state.error = null;
-      })
       .addCase(fetchRecipes.fulfilled, (state, action) => {
         state.isLoading = false;
         state.list = action.payload;
+      })
+      .addCase(fetchRecipes.pending, (state) => {
+        state.isLoading = true;
+        state.error = null;
       })
       .addCase(fetchRecipes.rejected, (state) => {
         state.error = 'Une erreur est survenue';
