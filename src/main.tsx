@@ -6,7 +6,7 @@ import ReactDOM from 'react-dom/client';
 import './styles/index.scss';
 
 import store from './store';
-import { router } from './routes';
+import { router } from './router';
 
 // Je créer un root pour mon application (a partir d'un élément HTML)
 const root = ReactDOM.createRoot(
