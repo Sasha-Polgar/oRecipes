@@ -1,6 +1,6 @@
 import { Navigate } from 'react-router-dom';
 import { useEffect } from 'react';
-import { useAppSelector, useAppDispatch } from '../../hooks/redux';
+import { useAppDispatch, useAppSelector } from '../../hooks/redux';
 import Page from '../../components/Page';
 import AppHeader from '../../components/AppHeader';
 import Content from '../../components/Content';
@@ -9,6 +9,7 @@ import { fetchFavoriteRecipes } from '../../store/reducers/recipes';
 function Favorites() {
   const dispatch = useAppDispatch();
   const isLogged = useAppSelector((state) => state.user.logged);
+  const recipes = useAppSelector((state) => state.recipes.favorites);
 
   // Lorsque j'arrive sur la page, j'emet l'intention de récupérer mes recettes favorites
   useEffect(() => {
@@ -25,7 +26,7 @@ function Favorites() {
       <Content
         title="Vos recettes favorites"
         text="On les a gardé au chaud pour vous !"
-        recipes={[]}
+        recipes={recipes}
       />
     </Page>
   );
